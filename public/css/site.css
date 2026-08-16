@@ -1,0 +1,360 @@
+/* ============================================================
+   blairhartman.com — "Workpaper" design system  ·  v0.2
+   ------------------------------------------------------------
+   Ground:  ledger-paper green, the columnar pad of the trade
+   Ink:     near-black with a green cast
+   Pen:     fountain blue-black — the reviewer's tick mark
+   Type:    Besley (Clarendon revival: the typeface of registers
+            and ledgers) / Public Sans / IBM Plex Mono
+
+   Same auditor, wider file. The visual language is unchanged
+   from v0.1; what the file is evidence of is not.
+
+   Contents
+     1. Tokens
+     2. Base & reset
+     3. Layout helpers
+     4. Header / navigation
+     5. Hero + reviewer tick + index
+     6. Currently (dated margin annotation)
+     7. Sections & headings
+     8. Exhibits + specimen
+     9. About
+    10. The bottom line (contact)
+    11. Double rule + colophon
+    12. Print
+   ============================================================ */
+
+/* ---------- 1. Tokens ---------- */
+:root{
+  --paper:      #EEF1EA;
+  --paper-deep: #E4E9DF;
+  --ink:        #1A211C;
+  --ink-soft:   #54605A;
+  --pen:        #2A47A8;
+  --pen-deep:   #1D3478;
+  --rule:       #C8D1C3;
+  --max:        46rem;
+  --serif: "Besley", "Iowan Old Style", Georgia, serif;
+  --sans:  "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:  "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  /* Keep the paper palette; never let the browser auto-invert it. */
+  color-scheme: light;
+}
+
+/* ---------- 2. Base & reset ---------- */
+*{ box-sizing:border-box; margin:0; }
+
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+::selection{ background:var(--pen); color:var(--paper); }
+
+a{ color:var(--pen); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:hover{ color:var(--pen-deep); }
+a:focus-visible, button:focus-visible{
+  outline:2px solid var(--pen);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* Screen-reader-only utility (visually hidden, still announced) */
+.sr-only{
+  position:absolute; width:1px; height:1px;
+  padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* ---------- 3. Layout helpers ---------- */
+.wrap{
+  max-width:var(--max);
+  margin-inline:auto;
+  padding-inline:1.5rem;
+}
+
+/* the main landmark is the skip-link target; suppress its focus ring
+   (it is a container, not an interactive control) */
+main:focus{ outline:none; }
+
+.skip{
+  position:absolute; left:-200vw; top:0;
+  background:var(--ink); color:var(--paper);
+  padding:.55rem 1rem; z-index:10; font-family:var(--mono); font-size:.85rem;
+  text-decoration:none;
+}
+.skip:focus{ left:1rem; top:1rem; }
+
+/* ---------- 4. Header / navigation ---------- */
+.top{ border-bottom:1px solid var(--rule); }
+.top-row{
+  display:flex; flex-wrap:wrap; gap:.25rem 1.5rem;
+  align-items:baseline; justify-content:space-between;
+  padding-block:.9rem;
+}
+.wordmark{
+  font-family:var(--serif); font-weight:700; font-size:1.15rem;
+  color:var(--ink); text-decoration:none; letter-spacing:.01em;
+  padding-block:.35rem;
+}
+.top nav{ display:flex; gap:.25rem 1.25rem; flex-wrap:wrap; }
+.top nav a{
+  font-family:var(--mono); font-size:.8rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--ink-soft); text-decoration:none;
+  /* comfortable tap target without inflating the header visually */
+  display:inline-flex; align-items:center; min-height:2.75rem;
+  padding-inline:.15rem;
+}
+.top nav a:hover{ color:var(--pen); }
+
+/* ---------- 5. Hero + reviewer tick + index ---------- */
+.hero{ padding-block:5rem 3.5rem; }
+h1{
+  font-family:var(--serif); font-weight:600;
+  font-size:clamp(2rem, 5vw, 3.15rem);
+  line-height:1.16; letter-spacing:-.01em;
+  max-width:22ch;
+}
+
+/* the signature: a reviewer's tick, set inline beside the closing word
+   so it reads as a sign-off on the whole statement and can never drift
+   onto another line's text */
+.ticked{ white-space:nowrap; }
+.ticked svg{
+  display:inline-block;
+  width:.6em; height:.4em;
+  margin-left:.14em;
+  vertical-align:.26em;
+  transform:rotate(-6deg);
+  overflow:visible;
+}
+.ticked path{
+  fill:none; stroke:var(--pen);
+  stroke-width:6; stroke-linecap:round; stroke-linejoin:round;
+}
+@media (prefers-reduced-motion: no-preference){
+  .ticked path{
+    stroke-dasharray:60; stroke-dashoffset:60;
+    animation:draw .55s ease-out .5s forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+}
+
+/* the index: the hero line decoded into concrete files of evidence,
+   set as a legend/contents block — workpaper furniture, not a résumé */
+.index{
+  list-style:none; padding:0;
+  margin-top:2.5rem; max-width:38rem;
+  border-top:1px solid var(--rule);
+}
+.index li{
+  display:grid;
+  grid-template-columns:2.5rem minmax(6rem, 8rem) 1fr;
+  gap:.15rem .9rem;
+  align-items:baseline;
+  padding-block:.85rem;
+  border-bottom:1px solid var(--rule);
+}
+.index .ref{
+  font-family:var(--mono); font-size:.8rem; font-weight:500;
+  color:var(--pen); letter-spacing:.04em;
+}
+.index .index-key{
+  font-family:var(--serif); font-weight:600; font-size:1.05rem;
+  color:var(--ink);
+}
+.index .index-val{
+  font-family:var(--mono); font-size:.8rem; color:var(--ink-soft);
+  letter-spacing:.02em; line-height:1.5;
+}
+/* On narrow screens the value drops to its own full-width line under the
+   key, rather than crushing into a ragged third column. */
+@media (max-width: 30rem){
+  .index li{ grid-template-columns:2.5rem 1fr; row-gap:.4rem; }
+  .index .index-val{ grid-column:2; }
+}
+
+/* ---------- 6. Currently (dated margin annotation) ---------- */
+.currently-block{ padding-block:0 3.5rem; }
+.currently{
+  position:relative;
+  border-left:2px solid var(--pen);
+  background:var(--paper-deep);
+  padding:1.15rem 1.35rem;
+  border-radius:0 4px 4px 0;
+  max-width:40rem;
+}
+.currently-head{
+  display:flex; flex-wrap:wrap; gap:.2rem .75rem;
+  align-items:baseline; justify-content:space-between;
+  margin-bottom:.9rem;
+}
+.currently-head h2{
+  font-family:var(--mono); font-weight:500; font-size:.8rem;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--pen);
+  border:0; padding:0; margin:0;
+}
+.currently .asof{
+  font-family:var(--mono); font-size:.75rem; color:var(--ink-soft);
+  letter-spacing:.04em;
+}
+.currently-list{ list-style:none; padding:0; display:grid; gap:.55rem; }
+.currently-list li{
+  display:grid;
+  grid-template-columns:5.5rem 1fr;
+  gap:.2rem .8rem; align-items:baseline;
+}
+.currently-list .verb{
+  font-family:var(--mono); font-size:.75rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--ink-soft);
+}
+.currently-list .what{ color:var(--ink); }
+.currently-list cite{ font-style:italic; }
+
+/* At generous widths the date steps out into the margin, the way a
+   reviewer dates a note in the rule — collapses back into the header
+   flow below 72rem. */
+@media (min-width: 72rem){
+  .currently-head .asof{
+    position:absolute; top:1.2rem; right:100%;
+    margin-right:2.25rem; text-align:right; white-space:nowrap;
+  }
+}
+
+/* ---------- 7. Sections & headings ---------- */
+section.block{ padding-block:3.5rem; }
+.sec-label{
+  display:block; font-family:var(--mono); font-weight:500; font-size:.8rem;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft);
+  padding-bottom:.6rem; border-bottom:1px solid var(--rule);
+  margin-bottom:2.5rem;
+}
+
+/* ---------- 8. Exhibits + specimen ---------- */
+.exhibit{ margin-bottom:3.5rem; }
+.exhibit:last-of-type{ margin-bottom:0; }
+.exhibit-ref{
+  font-family:var(--mono); font-size:.8rem; font-weight:500; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--pen); margin-bottom:.4rem;
+}
+.exhibit h3{
+  font-family:var(--serif); font-weight:600;
+  font-size:clamp(1.35rem, 3vw, 1.7rem); line-height:1.25;
+  max-width:26ch; margin-bottom:.9rem;
+}
+.exhibit p{ max-width:62ch; }
+.exhibit p + p{ margin-top:.9rem; }
+.filed{
+  margin-top:1rem; font-family:var(--mono); font-size:.8rem;
+  color:var(--ink-soft); letter-spacing:.02em;
+}
+.filed .filed-label{
+  color:var(--ink-soft); text-transform:uppercase; letter-spacing:.08em;
+  font-size:.72rem; margin-right:.55rem;
+}
+.tieout{
+  margin-top:.5rem; font-family:var(--mono); font-size:.8rem;
+  color:var(--pen); letter-spacing:.02em;
+}
+.tieout .mark{ font-weight:500; }
+
+/* the specimen: silent type-coercion, made visible — the strongest
+   show-don't-tell artifact on the page */
+.specimen{
+  margin-top:1.25rem; padding:1.1rem 1.25rem;
+  background:var(--paper-deep); border:1px solid var(--rule);
+  border-radius:4px; max-width:34rem;
+}
+.specimen figcaption{
+  font-family:var(--mono); font-size:.75rem; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--ink-soft); margin-bottom:.8rem;
+}
+.specimen-row{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:.35rem .6rem;
+  font-family:var(--mono); font-size:.85rem; padding-block:.2rem;
+}
+.specimen-row .src{ color:var(--ink); }
+.specimen-row .arrow{ color:var(--ink-soft); }
+.specimen-row .bad{ color:var(--ink-soft); text-decoration:line-through; text-decoration-thickness:1px; }
+.specimen-row .why{ font-size:.75rem; color:var(--ink-soft); font-style:italic; font-family:var(--sans); }
+.specimen .tieout{ margin-top:.7rem; }
+
+/* ---------- 9. About ---------- */
+.about p{ max-width:62ch; margin-bottom:1.15rem; }
+.about p:last-child{ margin-bottom:0; }
+
+/* ---------- 10. The bottom line (contact) ---------- */
+.total{ padding-block:3.5rem 3rem; }
+.total .wrap{
+  border-top:1px solid var(--ink);
+  padding-top:2.5rem;
+}
+.total h2{
+  font-family:var(--serif); font-weight:700;
+  font-size:clamp(1.6rem, 4vw, 2.1rem); margin-bottom:1rem;
+}
+.total p{ max-width:56ch; }
+.contact-links{
+  margin-top:1.75rem; display:flex; flex-wrap:wrap; gap:.4rem 1.75rem;
+  font-family:var(--mono); font-size:.9rem;
+}
+.contact-links a{
+  display:inline-flex; align-items:center; min-height:2.75rem;
+}
+
+/* ---------- 11. Double rule + colophon ---------- */
+.double-rule{
+  max-width:var(--max); margin:3rem auto 0; padding-inline:1.5rem;
+}
+.double-rule span{
+  display:block; border-top:1px solid var(--ink);
+  position:relative; height:4px;
+}
+.double-rule span::after{
+  content:""; position:absolute; left:0; right:0; top:3px;
+  border-top:1px solid var(--ink);
+}
+
+footer{ padding-block:1.75rem 3rem; }
+.motto{
+  font-family:var(--serif); font-style:italic; font-weight:400;
+  color:var(--ink-soft); font-size:.95rem; max-width:52ch;
+}
+.colophon{
+  margin-top:1.5rem; display:grid; gap:.35rem .9rem;
+  grid-template-columns:auto 1fr; max-width:26rem;
+  font-family:var(--mono); font-size:.75rem; color:var(--ink-soft);
+  letter-spacing:.03em;
+}
+.colophon dt{ text-transform:uppercase; letter-spacing:.08em; }
+.colophon dd{ margin:0; color:var(--ink); }
+.copyright{
+  margin-top:1.5rem; font-family:var(--mono); font-size:.75rem;
+  color:var(--ink-soft); letter-spacing:.04em;
+}
+
+/* ---------- 12. Print ---------- */
+@media print{
+  html, body{ background:#fff; color:#000; }
+  .skip, .top nav{ display:none; }
+  .top{ border-bottom:1px solid #999; }
+  a{ color:#000; }
+  .index .ref, .exhibit-ref, .tieout, .currently, .currently-head h2{ color:#000; }
+  .currently{ border-left:2px solid #000; background:#f3f3f3; }
+  .specimen{ background:#f3f3f3; border-color:#999; }
+  .double-rule span, .double-rule span::after{ border-top-color:#000; }
+  .total .wrap{ border-top-color:#000; }
+  .ticked path{ stroke:#000; stroke-dashoffset:0; animation:none; }
+  section, .exhibit, .specimen, .currently{ break-inside:avoid; }
+}

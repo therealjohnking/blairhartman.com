@@ -3,391 +3,145 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blair Hartman — Analytics Engineering &amp; Healthcare Data</title>
-<meta name="description" content="Indianapolis-based analytics professional building trustworthy data pipelines, integrations, and automation for healthcare enterprises. SQL, Python, BigQuery, Oracle Fusion &amp; EDM.">
-<meta property="og:title" content="Blair Hartman — Analytics Engineering &amp; Healthcare Data">
-<meta property="og:description" content="I make healthcare data trustworthy enough to automate.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#EEF1EA">
+<title>Blair Hartman — Systems, Software &amp; Stories</title>
+<meta name="description" content="Blair Hartman follows interesting problems until they turn into systems, software, or stories — enterprise data, native macOS software, film-finance tools, small utilities, and writing.">
+<meta property="og:title" content="Blair Hartman — Systems, Software &amp; Stories">
+<meta property="og:description" content="I follow interesting problems until they turn into systems, software, or stories.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://blairhartman.com">
+<link rel="canonical" href="https://blairhartman.com">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23EEF1EA'/%3E%3Cpath d='M16 34 L27 45 L48 20' fill='none' stroke='%232A47A8' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,500;0,600;0,700;1,400&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  /* ============================================================
-     blairhartman.com — "Workpaper" design system
-     Ground:  ledger-paper green, the columnar pad of the trade
-     Ink:     near-black with a green cast
-     Pen:     fountain blue-black — the reviewer's tick mark
-     Type:    Besley (Clarendon revival: the typeface of registers
-              and ledgers) / Public Sans / IBM Plex Mono
-     ============================================================ */
-  :root{
-    --paper:      #EEF1EA;
-    --paper-deep: #E4E9DF;
-    --ink:        #1A211C;
-    --ink-soft:   #54605A;
-    --pen:        #2A47A8;
-    --pen-deep:   #1D3478;
-    --rule:       #C8D1C3;
-    --max:        46rem;
-    --serif: "Besley", "Iowan Old Style", Georgia, serif;
-    --sans:  "Public Sans", "Helvetica Neue", Arial, sans-serif;
-    --mono:  "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  }
-
-  *{ box-sizing:border-box; margin:0; }
-
-  html{ scroll-behavior:smooth; }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-  }
-
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--sans);
-    font-size:1.0625rem;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  ::selection{ background:var(--pen); color:var(--paper); }
-
-  a{ color:var(--pen); text-decoration-thickness:1px; text-underline-offset:3px; }
-  a:hover{ color:var(--pen-deep); }
-  a:focus-visible, button:focus-visible{
-    outline:2px solid var(--pen);
-    outline-offset:3px;
-    border-radius:2px;
-  }
-
-  .wrap{
-    max-width:var(--max);
-    margin-inline:auto;
-    padding-inline:1.5rem;
-  }
-
-  .skip{
-    position:absolute; left:-200vw; top:0;
-    background:var(--ink); color:var(--paper);
-    padding:.5rem 1rem; z-index:10; font-family:var(--mono); font-size:.85rem;
-  }
-  .skip:focus{ left:1rem; top:1rem; }
-
-  /* ---------- header ---------- */
-  .top{ border-bottom:1px solid var(--rule); }
-  .top-row{
-    display:flex; flex-wrap:wrap; gap:.5rem 1.5rem;
-    align-items:baseline; justify-content:space-between;
-    padding-block:1.1rem;
-  }
-  .wordmark{
-    font-family:var(--serif); font-weight:700; font-size:1.15rem;
-    color:var(--ink); text-decoration:none; letter-spacing:.01em;
-  }
-  .top nav{ display:flex; gap:1.25rem; flex-wrap:wrap; }
-  .top nav a{
-    font-family:var(--mono); font-size:.8rem; letter-spacing:.06em;
-    text-transform:uppercase; color:var(--ink-soft); text-decoration:none;
-  }
-  .top nav a:hover{ color:var(--pen); }
-
-  /* ---------- hero ---------- */
-  .hero{ padding-block:5.5rem 4.5rem; }
-  .kicker{
-    font-family:var(--mono); font-size:.8rem; letter-spacing:.1em;
-    text-transform:uppercase; color:var(--ink-soft); margin-bottom:1.5rem;
-  }
-  h1{
-    font-family:var(--serif); font-weight:600;
-    font-size:clamp(2.1rem, 5.5vw, 3.3rem);
-    line-height:1.15; letter-spacing:-.01em;
-    max-width:20ch;
-  }
-
-  /* the signature: a reviewer's tick set beside the key word,
-     inline so it can never drift onto another line's text */
-  .ticked{ white-space:nowrap; }
-  .ticked svg{
-    display:inline-block;
-    width:.62em; height:.41em;
-    margin-left:.1em;
-    vertical-align:.26em;
-    transform:rotate(-6deg);
-    overflow:visible;
-  }
-  .ticked path{
-    fill:none; stroke:var(--pen);
-    stroke-width:6; stroke-linecap:round; stroke-linejoin:round;
-  }
-  @media (prefers-reduced-motion: no-preference){
-    .ticked path{
-      stroke-dasharray:60; stroke-dashoffset:60;
-      animation:draw .55s ease-out .5s forwards;
-    }
-    @keyframes draw{ to{ stroke-dashoffset:0; } }
-  }
-
-  .lede{
-    margin-top:1.75rem; max-width:54ch;
-    font-size:1.125rem; color:var(--ink);
-  }
-  .hero-meta{
-    margin-top:2rem; font-family:var(--mono); font-size:.85rem;
-    color:var(--ink-soft);
-  }
-  .hero-meta a{ color:var(--pen); }
-
-  /* ---------- sections ---------- */
-  section.block{ padding-block:3.5rem; }
-  .sec-label{
-    display:block; font-family:var(--mono); font-size:.8rem;
-    letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft);
-    padding-bottom:.6rem; border-bottom:1px solid var(--rule);
-    margin-bottom:2.5rem;
-  }
-
-  /* ---------- exhibits (case studies) ---------- */
-  .exhibit{ margin-bottom:3.25rem; }
-  .exhibit:last-of-type{ margin-bottom:0; }
-  .exhibit-ref{
-    font-family:var(--mono); font-size:.8rem; letter-spacing:.08em;
-    text-transform:uppercase; color:var(--pen); margin-bottom:.4rem;
-  }
-  .exhibit h2{
-    font-family:var(--serif); font-weight:600;
-    font-size:clamp(1.35rem, 3vw, 1.7rem); line-height:1.25;
-    max-width:26ch; margin-bottom:.9rem;
-  }
-  .exhibit p{ max-width:62ch; }
-  .stack{
-    margin-top:1rem; font-family:var(--mono); font-size:.8rem;
-    color:var(--ink-soft); letter-spacing:.02em;
-  }
-  .tieout{
-    margin-top:.45rem; font-family:var(--mono); font-size:.8rem;
-    color:var(--pen); letter-spacing:.02em;
-  }
-
-  /* the specimen: silent type-coercion, made visible */
-  .specimen{
-    margin-top:1.25rem; padding:1.1rem 1.25rem;
-    background:var(--paper-deep); border:1px solid var(--rule);
-    border-radius:4px; max-width:34rem;
-  }
-  .specimen figcaption{
-    font-family:var(--mono); font-size:.75rem; letter-spacing:.05em;
-    text-transform:uppercase; color:var(--ink-soft); margin-bottom:.8rem;
-  }
-  .specimen-row{
-    display:flex; flex-wrap:wrap; align-items:baseline; gap:.35rem .6rem;
-    font-family:var(--mono); font-size:.85rem; padding-block:.2rem;
-  }
-  .specimen-row .src{ color:var(--ink); }
-  .specimen-row .arrow{ color:var(--ink-soft); }
-  .specimen-row .bad{ color:var(--ink-soft); text-decoration:line-through; text-decoration-thickness:1px; }
-  .specimen-row .why{ font-size:.75rem; color:var(--ink-soft); font-style:italic; font-family:var(--sans); }
-  .specimen .tieout{ margin-top:.7rem; }
-
-  /* ---------- toolkit ---------- */
-  .kit{
-    display:grid; gap:2rem;
-    grid-template-columns:repeat(auto-fit, minmax(13rem, 1fr));
-  }
-  .kit h3{
-    font-family:var(--serif); font-weight:600; font-size:1.05rem;
-    margin-bottom:.7rem;
-  }
-  .kit ul{ list-style:none; padding:0; }
-  .kit li{
-    font-family:var(--mono); font-size:.85rem; color:var(--ink);
-    padding-block:.22rem; border-bottom:1px dotted var(--rule);
-  }
-  .kit li:last-child{ border-bottom:none; }
-  .in-progress{
-    margin-top:2rem; font-family:var(--mono); font-size:.85rem;
-    color:var(--ink-soft);
-  }
-  .in-progress strong{ color:var(--pen); font-weight:500; }
-
-  /* ---------- about ---------- */
-  .about p{ max-width:62ch; margin-bottom:1.15rem; }
-  .about p:last-child{ margin-bottom:0; }
-
-  /* ---------- contact: the total line ---------- */
-  .total{ padding-block:3.5rem 3rem; }
-  .total .wrap{
-    border-top:1px solid var(--ink);
-    padding-top:2.5rem;
-  }
-  .total h2{
-    font-family:var(--serif); font-weight:700;
-    font-size:clamp(1.6rem, 4vw, 2.1rem); margin-bottom:1rem;
-  }
-  .total p{ max-width:56ch; }
-  .contact-links{
-    margin-top:1.75rem; display:flex; flex-wrap:wrap; gap:.8rem 2rem;
-    font-family:var(--mono); font-size:.9rem;
-  }
-
-  /* the classic double rule under the total */
-  .double-rule{
-    max-width:var(--max); margin:3rem auto 0; padding-inline:1.5rem;
-  }
-  .double-rule span{
-    display:block; border-top:1px solid var(--ink);
-    position:relative; height:4px;
-  }
-  .double-rule span::after{
-    content:""; position:absolute; left:0; right:0; top:3px;
-    border-top:1px solid var(--ink);
-  }
-
-  /* ---------- footer ---------- */
-  footer{ padding-block:1.75rem 3rem; }
-  .motto{
-    font-family:var(--serif); font-style:italic; font-weight:400;
-    color:var(--ink-soft); font-size:.95rem;
-  }
-  .colophon{
-    margin-top:.5rem; font-family:var(--mono); font-size:.75rem;
-    color:var(--ink-soft); letter-spacing:.04em;
-  }
-
-  /* ---------- reveal-on-scroll (motion-safe) ---------- */
-  @media (prefers-reduced-motion: no-preference){
-    .reveal{ opacity:0; transform:translateY(10px);
-             transition:opacity .5s ease, transform .5s ease; }
-    .reveal.in{ opacity:1; transform:none; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
-<a class="skip" href="#work">Skip to selected work</a>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
   <div class="wrap top-row">
     <a class="wordmark" href="#">Blair Hartman</a>
-    <nav aria-label="Site">
-      <a href="#work">Work</a>
-      <a href="#toolkit">Toolkit</a>
+    <nav aria-label="Sections">
+      <a href="#exhibits">Exhibits</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <section class="hero wrap">
-    <p class="kicker">Analytics engineering · Healthcare data · Indianapolis</p>
-    <h1>I make healthcare data
-      <span class="ticked">trustworthy<svg viewBox="0 0 48 32" aria-hidden="true"><path d="M6 18 L19 29 L43 4"/></svg></span>
-      enough to automate.</h1>
-    <p class="lede">Eight years inside one of the nation’s largest nonprofit health systems, currently building the data and automation layer of an enterprise ERP implementation. I work where finance, engineering, and governance meet — and I optimize for the same outcome in every role: numbers people can act on without re-checking them.</p>
-    <p class="hero-meta">Currently: Oracle Fusion Cloud &amp; EDM implementation analytics &nbsp;·&nbsp; <a href="#work">Review the evidence ↓</a></p>
+    <h1>I follow interesting problems until they turn into systems, software, or
+      <span class="ticked">stories.<svg viewBox="0 0 48 32" aria-hidden="true"><path d="M6 18 L19 29 L43 4"/></svg></span></h1>
+
+    <ol class="index" aria-label="What that turns into">
+      <li>
+        <span class="ref" aria-hidden="true">01</span>
+        <span class="index-key">Systems</span>
+        <span class="index-val">finance · analytics · enterprise data</span>
+      </li>
+      <li>
+        <span class="ref" aria-hidden="true">02</span>
+        <span class="index-key">Software</span>
+        <span class="index-val">native apps · tooling · automation</span>
+      </li>
+      <li>
+        <span class="ref" aria-hidden="true">03</span>
+        <span class="index-key">Stories</span>
+        <span class="index-val">film · writing</span>
+      </li>
+    </ol>
   </section>
 
-  <section id="work" class="block">
+  <!-- CURRENTLY: update entries and date together -->
+  <section id="now" class="currently-block">
     <div class="wrap">
-      <span class="sec-label">Selected work</span>
-
-      <article class="exhibit reveal">
-        <p class="exhibit-ref">Exhibit A</p>
-        <h2>The export the consultants called non&#8209;automatable.</h2>
-        <p>On an Oracle Fusion Cloud implementation, the integration consultants assessed Enterprise Data Management extracts as a permanently manual workflow. I read the API documentation differently. The result is a scheduled OAuth&nbsp;2.0 client against EDM’s REST interface that authenticates, extracts, and stages dimension data without a human in the loop — retiring both the labor and the keying errors that traveled with it.</p>
-        <p class="stack">Oracle EDM · REST · OAuth 2.0</p>
-        <p class="tieout">✓ manual workflow retired</p>
-      </article>
-
-      <article class="exhibit reveal">
-        <p class="exhibit-ref">Exhibit B</p>
-        <h2>Extract tooling that refuses to corrupt identifiers.</h2>
-        <p>Spreadsheets coerce data types silently: a legacy ERP identifier opened in Excel can shed its leading zeros or collapse into scientific notation, and nobody notices until a reconciliation fails weeks later. I built a PowerShell library that automates BigQuery extracts with integrity safeguards engineered around exactly that failure — types preserved end to end, by default, on every run.</p>
-        <figure class="specimen">
-          <figcaption>The failure it prevents</figcaption>
-          <div class="specimen-row">
-            <span class="src">000471203</span><span class="arrow">→</span><span class="bad">471203</span><span class="why">leading zeros, silently dropped</span>
-          </div>
-          <div class="specimen-row">
-            <span class="src">9847002311240017</span><span class="arrow">→</span><span class="bad">9.847E+15</span><span class="why">precision, silently lost</span>
-          </div>
-          <p class="tieout">✓ delivered intact, every extract</p>
-        </figure>
-        <p class="stack">PowerShell · BigQuery · bq CLI</p>
-      </article>
-
-      <article class="exhibit reveal">
-        <p class="exhibit-ref">Exhibit C</p>
-        <h2>Models a data science institute carried into production.</h2>
-        <p>SQL and data models I built for implementation reporting were adopted by the health system’s internal data science institute into its production analytics products. There is no stronger code review than another team choosing to run your work.</p>
-        <p class="stack">SQL · BigQuery · Looker Studio</p>
-        <p class="tieout">✓ adopted into production analytics</p>
-      </article>
+      <div class="currently">
+        <div class="currently-head">
+          <h2>Currently</h2>
+          <p class="asof">as of August 2026</p>
+        </div>
+        <ul class="currently-list">
+          <li>
+            <span class="verb">Building</span>
+            <span class="what">Screenwriter, a native macOS screenwriting application</span>
+          </li>
+          <li>
+            <span class="verb">Writing</span>
+            <span class="what"><cite>Church Camp</cite></span>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <section id="toolkit" class="block">
+  <section id="exhibits" class="block">
     <div class="wrap">
-      <span class="sec-label">Toolkit</span>
-      <div class="kit reveal">
-        <div>
-          <h3>Languages</h3>
-          <ul>
-            <li>SQL</li>
-            <li>Python</li>
-            <li>PowerShell</li>
-            <li>JavaScript / Apps Script</li>
-            <li>VBA</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Platforms</h3>
-          <ul>
-            <li>BigQuery &amp; Google Cloud</li>
-            <li>Oracle Fusion Cloud</li>
-            <li>Oracle EDM</li>
-            <li>DuckDB</li>
-            <li>Looker Studio</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Practices</h3>
-          <ul>
-            <li>REST integration · OAuth 2.0</li>
-            <li>Data validation &amp; integrity</li>
-            <li>Workflow automation</li>
-            <li>Auditing AI-assisted output</li>
-            <li>Data governance</li>
-          </ul>
-        </div>
-      </div>
-      <p class="in-progress">In progress: <strong>dbt</strong> · <strong>Oracle Integration Cloud</strong></p>
+      <h2 class="sec-label">Selected work</h2>
+
+      <article class="exhibit">
+        <p class="exhibit-ref">Exhibit A</p>
+        <h3>The screenwriting software I wanted to write in.</h3>
+        <p>Screenwriter is a native macOS application built in Swift and AppKit, made because the screenplay editor I wanted did not exist. It is pageless and deliberately minimal — the interface stays out of the way so the writing is the only thing on screen. The guiding idea is <em>power without presence</em>: the depth is there when you reach for it, invisible when you don't. I write in it daily, which is the only feature list I trust.</p>
+        <p class="filed"><span class="filed-label">Filed under</span>macOS · Swift · AppKit</p>
+        <p class="tieout"><span class="mark" aria-hidden="true">✓</span> in real use · in active development</p>
+      </article>
+
+      <article class="exhibit">
+        <p class="exhibit-ref">Exhibit B</p>
+        <h3>The export the consultants called non&#8209;automatable.</h3>
+        <p>On an Oracle Fusion Cloud implementation, the integration consultants assessed the Enterprise Data Management extract as a permanently manual workflow. I read the API documentation differently. The result is a scheduled OAuth&nbsp;2.0 client against EDM's REST interface that authenticates, extracts, and stages dimension data without a human in the loop — retiring both the labor and the keying errors that traveled with it.</p>
+        <p>The manual path was not just slow; it was unsafe. Enterprise identifiers do not survive naive handling — a spreadsheet silently sheds leading zeros or collapses a long key into scientific notation, and nobody notices until a reconciliation fails weeks later. So the automation is built to preserve types end to end, by default, on every run.</p>
+        <figure class="specimen">
+          <figcaption>What ordinary handling does to an identifier</figcaption>
+          <div class="specimen-row">
+            <span class="src">000471203</span><span class="arrow" aria-hidden="true">→</span><span class="sr-only">becomes</span><span class="bad">471203</span><span class="why">leading zeros, silently dropped</span>
+          </div>
+          <div class="specimen-row">
+            <span class="src">9847002311240017</span><span class="arrow" aria-hidden="true">→</span><span class="sr-only">becomes</span><span class="bad">9.847E+15</span><span class="why">precision, silently lost</span>
+          </div>
+          <p class="tieout"><span class="mark" aria-hidden="true">✓</span> delivered intact, every run</p>
+        </figure>
+        <p class="filed"><span class="filed-label">Filed under</span>Oracle EDM · REST · OAuth 2.0 · data integrity</p>
+      </article>
+
+      <article class="exhibit">
+        <p class="exhibit-ref">Exhibit C</p>
+        <h3>Film Finance OS.</h3>
+        <p>Film financing runs on spreadsheets that no one fully trusts. Film Finance OS is software I am building to give that work a real spine — modeling financing scenarios, resolving investor waterfalls, and organizing the money behind a production so the numbers hold up when someone leans on them. It is one artifact where finance, software, and film turn out to be the same problem.</p>
+        <p class="filed"><span class="filed-label">Filed under</span>Film finance · Software</p>
+        <p class="tieout"><span class="mark" aria-hidden="true">✓</span> in development</p>
+      </article>
+
+      <article class="exhibit">
+        <p class="exhibit-ref">Exhibit D</p>
+        <h3>Oddments — a drawer of small, sharp tools.</h3>
+        <p>Oddments is a collection of little browser-based utilities, built local-first: the work happens in your browser, with no account, backend, or database behind it. There is an Invisible Character Inspector for the gremlins that hide in pasted text, and Slopometer, a deterministic prose-style analyzer. It lives next door to the data-quality work and is also just play — the drawer where a problem interesting enough to bother solving ends up as a working tool.</p>
+        <p class="filed"><span class="filed-label">Filed under</span>Browser tools · Local-first · Text &amp; data quality</p>
+      </article>
     </div>
   </section>
 
   <section id="about" class="block">
-    <div class="wrap about reveal">
-      <span class="sec-label">About</span>
-      <p>I came up through healthcare finance — general ledger oversight for roughly 1,600 business units through a twenty-billion-dollar annual close. That vantage teaches you precisely what happens downstream when data is wrong, and it is why I moved deliberately toward the engineering side of the problem: when the data layer is sound, everything built on top of it gets easier.</p>
-      <p>Alongside the day job, I have spent a decade in nonprofit governance — treasurer and director roles for education and public-health organizations, drafting bylaws, financial policy, and audit-ready reporting. Governance work and data work turn out to be the same discipline at different altitudes: controls, accountability, and documentation people can rely on.</p>
-      <p>Away from the keyboard, I write long-form fiction and make independent film.</p>
+    <div class="wrap about">
+      <h2 class="sec-label">About</h2>
+      <p>The common thread is an instinct, not a job title: I run into a complicated system, need to know how it actually works, take it apart, and build something useful out of what I find. That has pointed me at finance, analytics, enterprise systems, governance, software, film, and writing — different surfaces, the same reflex underneath.</p>
+      <p>I came up through healthcare finance — general-ledger oversight across roughly 1,600 business units through a twenty-billion-dollar annual close — and moved deliberately toward the engineering side of the problem, because when the data layer is sound, everything built on top of it gets easier. Alongside that I spent a decade in nonprofit governance, in treasurer and director roles, drafting bylaws, financial policy, and audit-ready reporting. Governance work and data work turn out to be the same discipline at different altitudes: controls, accountability, and documentation people can rely on.</p>
+      <p>A screenwriting app, a film-finance engine, a story in progress — the same curiosity that drives the ledger work, following the problem into a different room.</p>
     </div>
   </section>
 
   <section id="contact" class="total">
-    <div class="wrap reveal">
+    <div class="wrap">
       <h2>The bottom line</h2>
-      <p>I am interested in analytics engineering and senior data roles where trustworthy data is treated as the product — particularly in healthcare. If that is what you are building, I would like to hear about it.</p>
+      <p>Have something interesting to talk about — a hard data problem, a piece of software worth building, a story worth telling? That is the part I never get tired of. Reach out.</p>
       <div class="contact-links">
         <a href="mailto:blair@blairhartman.com">blair@blairhartman.com</a>
-        <a href="https://www.linkedin.com/in/blairhartman" rel="me">LinkedIn ↗</a>
-        <!-- TODO: un-comment once your GitHub username is finalized
-        <a href="https://github.com/YOUR-USERNAME" rel="me">GitHub ↗</a>
-        -->
-        <!-- TODO: drop resume.pdf into this folder, then un-comment
-        <a href="/resume.pdf">Résumé (PDF)</a>
-        -->
+        <a href="https://www.linkedin.com/in/blairhartman" rel="me">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/therealjohnking" rel="me">GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
@@ -396,25 +150,13 @@
 </main>
 
 <footer class="wrap">
-  <p class="motto">Destitutus ventis, remos adhibe — when the wind fails, take to the oars.</p>
-  <p class="colophon">© <span id="year">2026</span> Blair Hartman · Indianapolis, Indiana</p>
+  <p class="motto"><span lang="la">Destitutus ventis, remos adhibe</span> — when the wind fails, take to the oars.</p>
+  <dl class="colophon">
+    <dt>Prepared by</dt><dd>Blair Hartman</dd>
+    <dt>Last reviewed</dt><dd>August 2026</dd>
+    <dt>Location</dt><dd>Indianapolis, Indiana</dd>
+  </dl>
+  <p class="copyright">© 2026 Blair Hartman</p>
 </footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Motion-safe scroll reveals
-  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches
-      && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  } else {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
-  }
-</script>
 </body>
 </html>
